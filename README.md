@@ -6,19 +6,43 @@
 
 __Not for production use – use with caution!__
 
+## In Transition
+
+The files that make up the Marlin firmware are being reorganized to provide a more managable structure.
+
+Since the 1.1RC1, the following changes have been made:
+
+1) File Layout --
+   The bulk of the code is moved into the hardware/marlin/avr/libraries/marlin/ folder.
+   A trivial sketch that can be used to compile and upload the firmware is located at hardware/marlin/avr/libraries/marlin/examples/MarlinFirmware/MarlinFirmware.ino
+
+2) Configuration Files --
+   The configuration files are being reorganized. The configuration files from the Marlin 1.1 series are still available in the configurations folder.
+   The procedure that you use to customize your configuration has changed. Please see hardware/marlin/avr/libraries/marlin/examples/MarlinFirmware/FirmwareCustomization.h for more information.
+
+3) Coding Style --
+   The formatting of the source code is now controlled by the [astyle](http://astyle.sourceforge.net/astyle.html) program.
+   The options which specify the style in use are found in the .astylerc file which is located in the top level folder of this repository.
+   To reformat a file, run ```astyle --options=.astylerc <file_name>```.
+   You will need to do this before committing the file to the git repository. Pull requests which do not conform to the specified style will be rejected by the automated tests in our Travis Intgration suite.
+
+4) Compilation Support --
+   The IDE_1.6.5 branch has the support routines to build the firmware using the Arduino IDE 1.6.5.  At the present time, this support is incomplete.
+   If you need them, you can retrieve earlier support routines from the [RC branch](https://github.com/MarlinFirmware/Marlin/tree/RC) of the [Marlin Release Repository](https://github.com/MarlinFirmware/Marlin).
+
 The [dev branch](https://github.com/MarlinFirmware/MarlinDev/tree/dev) contains the most up-to-date Marlin code. When reporting any issues, please check to see if they are resolved in this branch first. But let us know if issues exist in tagged releases so that we can document and patch them.
 
 ## Testing
-The [RC branch](https://github.com/MarlinFirmware/MarlinDev/tree/RC) will contain the latest pre-release candidate.
+The [RC branch](https://github.com/MarlinFirmware/MarlinDev/tree/RC) contains the latest Marlin 1.1 pre-release candidate.
 
 ## Submitting Patches
 Development patches should be submitted as a Pull Request against the [master](https://github.com/MarlinFirmware/MarlinDev/tree/master) branch
- 
+
 For the latest tagged version of Marlin (currently 1.0.2 – January 2015) you should switch to the [Release Repository](https://github.com/MarlinFirmware/Marlin).
 
-## Current Status: Bug Fixing
+## Current Status: Reorganization of Source Files
 
-Marlin development is being accelerated to catch up with a long list of issues. Check the Issues and Pull Requests links on the right to to see what we are currently working on.
+Testing of the 1.1 Release Candidate is under way. Marlin development needs to proceed with caution while the structural changes being implemented here are completed.
 
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/2224/badge.svg)](https://scan.coverity.com/projects/2224)
 [![Travis Build Status](https://travis-ci.org/MarlinFirmware/MarlinDev.svg)](https://travis-ci.org/MarlinFirmware/MarlinDev)
